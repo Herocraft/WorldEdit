@@ -111,10 +111,15 @@ public class WorldEditListener implements Listener {
             return;
         }
 
+        if (!event.getPlayer().hasPermission("worldedit.use")) {
+            return;
+        }
+
         if (event.useItemInHand() == Result.DENY) {
             return;
         }
 
+        /*
         try {
             if (event.getHand() == EquipmentSlot.OFF_HAND) {
                 return; // TODO api needs to be able to get either hand depending on event
@@ -123,6 +128,7 @@ public class WorldEditListener implements Listener {
         } catch (NoSuchMethodError ignored) {
         } catch (NoSuchFieldError ignored) {
         }
+        */
 
         final LocalPlayer player = plugin.wrapPlayer(event.getPlayer());
         final World world = player.getWorld();
